@@ -1,9 +1,9 @@
 import math
 
 
-def qt_side(sp):
+def qt_side(a,b):
 
-    s = (2 / math.sqrt(3) * sp)
-    return s
+    aa = b/(2 * a) * math.sqrt(4*a**2-b**2)
+    return aa
 
-print(qt_side(45))
+print(qt_side(34, 48))

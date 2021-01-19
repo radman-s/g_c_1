@@ -42,6 +42,12 @@ class RtriangleScreen(Screen):
 class EqtriangleScreen(Screen):
     pass
 
+class IstriangleScreen(Screen):
+    pass
+
+class SquareScreen(Screen):
+    pass
+
 
 sm = ScreenManager()
 sm.add_widget(CubeScreen(name='cube'))
@@ -54,6 +60,9 @@ sm.add_widget(CapsuleScreen(name='capsule'))
 sm.add_widget(CircleScreen(name='circle'))
 sm.add_widget(RtriangleScreen(name='rtriangle'))
 sm.add_widget(EqtriangleScreen(name='eqtriangle'))
+sm.add_widget(IstriangleScreen(name='istriangle'))
+sm.add_widget(SquareScreen(name='square'))
+
 
 class MainApp(MDApp):
 
@@ -68,6 +77,8 @@ class MainApp(MDApp):
         self.enter_e = str('Enter edge')
         self.enter_s = str('Enter side')
         self.enter_vr = str('enter volume or radius')
+        self.enter_sa = str('enter side a')
+        self.enter_sb = str('enter side b')
         self.theme_cls.primary_palette = "Gray"  # "Purple", "Red"
         self.theme_cls.primary_hue = '500'
         self.theme_cls.accent_palette = 'Gray'
@@ -395,10 +406,10 @@ class MainApp(MDApp):
 
     def rt_sic(self, a, b):
         if len(str(a)) <= 0:
-            a = 'enter side a'
+            a = self.enter_sa
             return a
         elif len(str(b)) <= 0:
-            b = 'enter side b'
+            b = self.enter_sb
             return b
         else:
             cs = math.sqrt((float(a)**2) + (float(b)**2))
@@ -406,10 +417,10 @@ class MainApp(MDApp):
 
     def rt_per(self,  a, b, c):
         if len(str(a)) <= 0:
-            a = 'enter side a'
+            a = self.enter_sa
             return a
         elif len(str(b)) <= 0:
-            b = 'enter side b'
+            b = self.enter_sb
             return b
         else:
             pe = float(a) + float(b) + float(c)
@@ -417,10 +428,10 @@ class MainApp(MDApp):
 
     def rt_sper(self,  a, b, c):
         if len(str(a)) <= 0:
-            a = 'enter side a'
+            a = self.enter_sa
             return a
         elif len(str(b)) <= 0:
-            b = 'enter side b'
+            b = self.enter_sb
             return b
         else:
             pe = (float(a) + float(b) + float(c)) /2
@@ -428,10 +439,10 @@ class MainApp(MDApp):
 
     def rt_are(self,  a, b):
         if len(str(a)) <= 0:
-            a = 'enter side a'
+            a = self.enter_sa
             return a
         elif len(str(b)) <= 0:
-            b = 'enter side b'
+            b = self.enter_sb
             return b
         else:
             ar = (float(a) * float(b)) / 2
@@ -439,10 +450,10 @@ class MainApp(MDApp):
 
     def rt_irad(self,  a, b, c):
         if len(str(a)) <= 0:
-            a = 'enter side a'
+            a = self.enter_sa
             return a
         elif len(str(b)) <= 0:
-            b = 'enter side b'
+            b = self.enter_sb
             return b
         else:
             ar = (float(a) * float(b)) / (float(a) + float(b) + float(c))
@@ -450,10 +461,10 @@ class MainApp(MDApp):
 
     def rt_crad(self,  a, b, c):
         if len(str(a)) <= 0:
-            a = 'enter side a'
+            a = self.enter_sa
             return a
         elif len(str(b)) <= 0:
-            b = 'enter side b'
+            b = self.enter_sb
             return b
         else:
             cr = float(c)/ 2
@@ -461,9 +472,9 @@ class MainApp(MDApp):
 
 # eq-triangle
 
-    def qt_side(self,p, sp, ar, al, s):
+    def qt_sid(self,p, sp, ar, al, s):
         if len(str(p)) > 0:
-            s = 3 * float(p)/3 /2
+            s = float(p)/3
             return round(s, 2)
         elif len(str(sp)) > 0:
             s = 2 * float(sp) / 3
@@ -478,8 +489,200 @@ class MainApp(MDApp):
             return s
 
 
+    def qt_per(self, s, sp, ar, al, p):
+        if len(str(s)) > 0:
+            p = 3 * float(s)
+            return round(p, 2)
+        elif len(str(sp)) > 0:
+            a = 2 * float(sp) /3
+            p = 3 * float(a)
+            return round(p, 2)
+        elif len(str(ar)) > 0:
+            a = 2 * math.sqrt(float(ar)/math.sqrt(3))
+            p = 3 * a
+            return round(p, 2)
+        elif len(str(al)) > 0:
+            a = (2/math.sqrt(3)* float(al))
+            p = 3 * a
+            return round(p, 2)
+        else:
+            return p
 
+    def qt_sper(self, s, ar, al, p, sp):
+        if len(str(s)) > 0:
+            sp = 3 * float(s) / 2
+            return round(sp, 2)
+        elif len(str(ar)) > 0:
+            a = 2 * math.sqrt(float(ar)/math.sqrt(3))
+            sp = 3 * a / 2
+            return round(sp, 2)
+        elif len(str(al)) > 0:
+            a = (2/math.sqrt(3) * float(al))
+            sp = 3 * a / 2
+            return round(sp, 2)
+        elif len(str(p)) > 0:
+            a = float(p) / 3
+            sp = 3 *a / 2
+            return round(sp, 2)
+        else:
+            return sp
 
+    def qt_are(self, s, al, p, sp, ar):
+        if len(str(s)) > 0:
+            ar = (1/4) * math.sqrt(3) * float(s)**2
+            return round(ar, 2)
+        elif len(str(al)) > 0:
+            a = (2/math.sqrt(3) * float(al))
+            ar = (1/4) * math.sqrt(3) * a**2
+            return round(ar, 2)
+        elif len(str(p)) > 0:
+            a = float(p)/3
+            ar = (1 / 4) * math.sqrt(3) * a**2
+            return round(ar, 2)
+        elif len(str(sp)) > 0:
+            a = 2 * float(sp) / 3
+            ar = (1 / 4) * math.sqrt(3) * a**2
+            return round(ar, 2)
+        else:
+            return ar
+
+    def qt_alt(self, s, p, sp, ar, al):
+        if len(str(s)) > 0:
+            al = (1/2) * math.sqrt(3) * float(s)
+            return round(al, 2)
+        elif len(str(p)) > 0:
+            a = float(p) / 3
+            al = (1/2) * math.sqrt(3) * float(a)
+            return round(al, 2)
+        elif len(str(sp)) > 0:
+            a = 2 * float(sp) / 3
+            al = (1/2) * math.sqrt(3) * a
+            return round(al, 2)
+        elif len(str(ar)) > 0:
+            a = 2 * math.sqrt(float(ar)/math.sqrt(3))
+            al = (1/2) * math.sqrt(3) * a
+            return round(al, 2)
+        else:
+            return al
+
+# is-trianlge
+
+    def it_side_c(self, a):
+        if len(str(a)) <= 0:
+            c = self.enter_sa
+            return c
+        else:
+            c = float(a)
+            return round(c, 2)
+
+    def it_per(self, a, b):
+        if len(str(a)) <= 0:
+            p = self.enter_sa
+            return p
+        elif len(str(b)) <= 0:
+            p = self.enter_sb
+            return p
+        else:
+            p = 2 * float(a) + float(b)
+            return round(p, 2)
+
+    def it_sper(self, a, b):
+        if len(str(a)) <= 0:
+            sp = self.enter_sa
+            return sp
+        elif len(str(b)) <= 0:
+            sp = self.enter_sb
+            return sp
+        else:
+            sp = float(a) + (float(b) / 2)
+            return round(sp, 2)
+
+    def it_are(self, a, b):
+        if len(str(a)) <= 0:
+            ar = self.enter_sa
+            return ar
+        elif len(str(b)) <= 0:
+            ar = self.enter_sb
+            return ar
+        else:
+            ar = float(b)/4 * math.sqrt(4 * float(a)**2 - float(b)**2)
+            return round(ar, 2)
+
+    def it_alta(self, a ,b):
+        if len(str(a)) <= 0:
+            aa = self.enter_sa
+            return aa
+        elif len(str(b)) <= 0:
+            aa = self.enter_sb
+            return aa
+        else:
+            aa = float(b) / (2 * float(a)) * math.sqrt(4 * float(a) ** 2 - float(b) ** 2)
+            return round(aa, 2)
+
+    def it_altb(self, a, b):
+        if len(str(a)) <= 0:
+            ab = self.enter_sa
+            return ab
+        elif len(str(b)) <= 0:
+            ab = self.enter_sb
+            return ab
+        else:
+            ab = (1/2) * math.sqrt(4 * float(a)**2 - float(b)**2)
+            return round(ab, 2)
+
+# square
+
+    def sq_sid(self, ar, di, pe, s):
+        if len(str(ar)) > 0:
+            s = math.sqrt(float(ar))
+            return round(s, 2)
+        elif len(str(di)) > 0:
+            s = float(di) / math.sqrt(2)
+            return round(s, 2)
+        elif len(str(pe)) > 0:
+            s = float(pe) / 4
+            return round(s, 2)
+        else:
+            return s
+
+    def sq_are(self, s, di, pe, ar):
+        if len(str(s)) > 0:
+            ar = float(s)**2
+            return round(ar, 2)
+        elif len(str(di)) > 0:
+            ar = float(s)**2
+            return round(ar, 2)
+        elif len(str(pe)) > 0:
+            ar = float(s)**2
+            return round(ar, 2)
+        else:
+            return ar
+
+    def sq_dia(self, s, pe, ar, di):
+        if len(str(s)) > 0:
+            di = float(s) * math.sqrt(2)
+            return round(di, 2)
+        elif len(str(pe)) > 0:
+            di = float(s) * math.sqrt(2)
+            return round(di, 2)
+        elif len(str(ar)) > 0:
+            di = float(ar) * math.sqrt(2)
+            return round(di, 2)
+        else:
+            return di
+
+    def sq_per(self, s, ar, di, pe):
+        if len(str(s)) > 0:
+            pe = 4 * float(s)
+            return round(pe, 2)
+        elif len(str(ar)) > 0:
+            pe = 4 * float(ar)
+            return round(pe, 2)
+        elif len(str(di)) > 0:
+            pe = 4 * float(di)
+            return round(pe, 2)
+        else:
+            return pe
 
 
 if __name__=='__main__':
