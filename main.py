@@ -48,6 +48,9 @@ class IstriangleScreen(Screen):
 class SquareScreen(Screen):
     pass
 
+class RectangleScreen(Screen):
+    pass
+
 
 sm = ScreenManager()
 sm.add_widget(CubeScreen(name='cube'))
@@ -62,7 +65,7 @@ sm.add_widget(RtriangleScreen(name='rtriangle'))
 sm.add_widget(EqtriangleScreen(name='eqtriangle'))
 sm.add_widget(IstriangleScreen(name='istriangle'))
 sm.add_widget(SquareScreen(name='square'))
-
+sm.add_widget(RectangleScreen(name='rectangle'))
 
 class MainApp(MDApp):
 
@@ -632,6 +635,49 @@ class MainApp(MDApp):
 
 # square
 
+    def sq_per(self,di, s, ar, pe):
+        if len(str(di)) > 0:
+            a = float(di)/ math.sqrt(2)
+            pe = float(a) * 4
+            return round(pe, 2)
+
+
+        elif len(str(s)) > 0:
+            pe = float(s) * 4
+            return round(pe, 2)
+        elif len(str(ar)) > 0:
+            pe = float(ar) * 4
+            return round(pe, 2)
+        else:
+            return pe
+
+    def sq_are(self,di, s, pe, ar):
+        if len(str(di)) > 0:
+            a = float(di) / math.sqrt(2)
+            ar = float(a) ** 2
+            return round(ar, 2)
+        elif len(str(s)) > 0:
+            ar = float(s) ** 2
+            return ar
+        elif len(str(pe)) > 0:
+            ar = float(pe) ** 2
+            return ar
+        else:
+            return ar
+
+    def sq_dia(self,s , pe, ar, di):
+        if len(str(s)) > 0:
+            di = math.sqrt(2) * float(s)
+            return round(di, 2)
+        elif len(str(pe)) > 0:
+            di = math.sqrt(2) * float(pe)
+            return round(di, 2)
+        elif len(str(ar)) > 0:
+            di = math.sqrt(2) * float(ar)
+            return round(di, 2)
+        else:
+            return di
+
     def sq_sid(self, ar, di, pe, s):
         if len(str(ar)) > 0:
             s = math.sqrt(float(ar))
@@ -644,45 +690,40 @@ class MainApp(MDApp):
             return round(s, 2)
         else:
             return s
+# rectangle
 
-    def sq_are(self, s, di, pe, ar):
-        if len(str(s)) > 0:
-            ar = float(s)**2
-            return round(ar, 2)
-        elif len(str(di)) > 0:
-            ar = float(s)**2
-            return round(ar, 2)
-        elif len(str(pe)) > 0:
-            ar = float(s)**2
-            return round(ar, 2)
+    def re_are(self, a, b):
+        if len(str(a)) <= 0:
+            a = self.enter_sa
+            return a
+        elif len(str(b)) <= 0:
+            b = self.enter_sb
+            return b
         else:
-            return ar
+            a = float(a) * float(b)
+            return round(a, 2)
 
-    def sq_dia(self, s, pe, ar, di):
-        if len(str(s)) > 0:
-            di = float(s) * math.sqrt(2)
-            return round(di, 2)
-        elif len(str(pe)) > 0:
-            di = float(s) * math.sqrt(2)
-            return round(di, 2)
-        elif len(str(ar)) > 0:
-            di = float(ar) * math.sqrt(2)
-            return round(di, 2)
+    def re_dia(self, a, b):
+        if len(str(a)) <= 0:
+            a = self.enter_sa
+            return a
+        elif len(str(b)) <= 0:
+            b = self.enter_sb
+            return b
         else:
-            return di
+            d = math.sqrt(float(a)**2 + float(b)**2)
+            return round(d, 2)
 
-    def sq_per(self, s, ar, di, pe):
-        if len(str(s)) > 0:
-            pe = 4 * float(s)
-            return round(pe, 2)
-        elif len(str(ar)) > 0:
-            pe = 4 * float(ar)
-            return round(pe, 2)
-        elif len(str(di)) > 0:
-            pe = 4 * float(di)
-            return round(pe, 2)
+    def re_per(self, a, b):
+        if len(str(a)) <= 0:
+            a = self.enter_sa
+            return a
+        elif len(str(b)) <= 0:
+            b = self.enter_sb
+            return b
         else:
-            return pe
+            p = 2 * float(a) + 2 * float(b)
+            return p
 
 
 if __name__=='__main__':

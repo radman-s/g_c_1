@@ -14,6 +14,7 @@ ScreenManager:
     EqtriangleScreen:
     IstriangleScreen:
     SquareScreen:
+    RectangleScreen:
 
 <MenuScreen>
     id: mns
@@ -146,6 +147,15 @@ ScreenManager:
                 size_hint: None,None
                 on_press: 
                     root.manager.current = 'square'
+                    root.manager.transition.direction = 'left'
+                    
+            MDRaisedButton:
+                text: 'Rectangle'
+                pos_hint: {'center_x': 0.5, 'center_y': 0.2}
+                size: 20, 20
+                size_hint: None,None
+                on_press: 
+                    root.manager.current = 'rectangle'
                     root.manager.transition.direction = 'left'
             
 <SphereScreen>
@@ -2223,7 +2233,7 @@ ScreenManager:
             id: tf_dia11
             helper_text: "diagonal"
             helper_text_mode: "persistent"
-            
+            on_focus: self.text = ""
             line_color_focus: 0, 0, 1, 1
             size_hint: 1, None
             height: "30dp"
@@ -2240,7 +2250,7 @@ ScreenManager:
             id: tf_per11
             helper_text: "perimeter"
             helper_text_mode: "persistent"
-           
+            on_focus: self.text = ""
             line_color_focus: 0, 0, 1, 1
             size_hint: 1, None
             height: "30dp"
@@ -2252,7 +2262,7 @@ ScreenManager:
             id: tf_are11
             helper_text: "area"
             helper_text_mode: "persistent"
-            
+            on_focus: self.text = ""
             line_color_focus: 0, 0, 1, 1
             size_hint: 1, None
             height: "30dp"
@@ -2264,17 +2274,21 @@ ScreenManager:
     MDIconButton:
         icon: "delete"
         theme_text_color: "ContrastParentBackground"
-        pos_hint: {"center_x": .92, "center_y": 0.38}
+        pos_hint: {"center_x": .92, "center_y": 0.42}
         text_color: app.theme_cls.primary_color
         user_font_size: "23sp"
         on_press:
+            l_out_are11.text = ''
+            l_out_per11.text = ''
+            l_out_dia11.text = ''
+            l_out_sid11.text = ''
            
                  
     MDIconButton:
         icon: "owl"
         theme_text_color: "Custom"
         text_color: app.theme_cls.accent_color
-        pos_hint: {"center_x": .92, "center_y": 0.44}
+        pos_hint: {"center_x": .92, "center_y": 0.52}
         user_font_size: "23sp"
         on_press:
         
@@ -2283,23 +2297,22 @@ ScreenManager:
             per11 = tf_per11.text
             are11 = tf_are11.text
             
-            si11 = app.sq_sid(are11, dia11, per11, sid11)
+            ar11 = app.sq_are(dia11, sid11, per11, are11)
+            pe11 = app.sq_per(dia11, sid11, are11, per11)
             di11 = app.sq_dia(sid11, per11, are11, dia11)
-            pe11 = app.sq_per(sid11, are11, dia11, per11)
-            ar11 = app.sq_are(sid11, dia11, per11, are11)
+            si11 = app.sq_sid(are11, dia11, per11, sid11)
             
-            l_out_sid11.text = f'{si11}'
-            l_out_dia11.text = f'{di11}'
-            l_out_per11.text = f'{pe11}'
             l_out_are11.text = f'{ar11}'
-            
+            l_out_per11.text = f'{pe11}'
+            l_out_dia11.text = f'{di11}'
+            l_out_sid11.text = f'{si11}'
             
     GridLayout:
         id: spvalues
         cols: 2
         size_hint_y: None
         height: self.minimum_height
-        pos_hint: {"center_x": .36, "center_y": .34}
+        pos_hint: {"center_x": .36, "center_y": .42}
         spacing: 34
         padding: 10
         canvas.before:
@@ -2356,6 +2369,174 @@ ScreenManager:
             font_size: "11px"
        
         
+    MDToolbar:
+        type: 'bottom'       
+        mode: 'free-end'
+        elevation: 10
+        height: '25px'
+                       
+    MDIconButton:
+        icon: "home-outline"
+        theme_text_color: "Hint"
+        pos_hint: {"center_x": .85, "center_y": 0.025}
+        text_color: app.theme_cls.primary_color
+        on_press: 
+            root.manager.current = 'menu'
+            root.manager.transition.direction = 'right'
+            
+<RectangleScreen>
+    id: rectscreen
+    name: 'rectangle'
+    
+    canvas.before:
+        Color:
+            rgba: 217/255, 217/234, 217/225, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    
+    Image:
+        source: 'rectangle.png'
+        halign: 'center'
+        pos_hint: {'center_x': 0.5, 'center_y': 0.7}
+        allow_stretch:True
+        opacity: 1
+    
+    BoxLayout:
+        pos_hint: {"center_y": 1.13}
+        padding: "10dp"
+        spacing: "10dp"  
+        
+        MDTextField:
+            id: tf_sida12
+            helper_text: "side a"
+            helper_text_mode: "persistent"
+            line_color_focus: 0, 0, 1, 1
+            size_hint: 1, None
+            height: "30dp"
+            max_text_length: 21
+            input_filter: 'float'
+            multiline: False
+                        
+        MDTextField:
+            id: tf_sidb12
+            helper_text: "side b"
+            helper_text_mode: "persistent"
+            line_color_focus: 0, 0, 1, 1
+            size_hint: 1, None
+            height: "30dp"
+            max_text_length: 15
+            input_filter: 'float'
+            multiline: False
+    
+    
+    MDIconButton:
+        icon: "delete"
+        theme_text_color: "ContrastParentBackground"
+        pos_hint: {"center_x": .92, "center_y": 0.49}
+        text_color: app.theme_cls.primary_color
+        user_font_size: "23sp"
+        on_press:
+        
+                 
+    MDIconButton:
+        icon: "owl"
+        theme_text_color: "Custom"
+        text_color: app.theme_cls.accent_color
+        pos_hint: {"center_x": .92, "center_y": 0.59}
+        user_font_size: "23sp"
+        on_press:
+            
+            sida12 = tf_sida12.text
+            sidb12 = tf_sidb12.text
+            
+            ar12 = app.re_are(sida12, sidb12)
+            pe12 = app.re_per(sida12, sidb12)
+            di12 = app.re_dia(sida12, sidb12)
+            
+            l_out_sida12.text = f'{sida12}'
+            l_out_sidb12.text = f'{sidb12}'
+            
+            l_out_dia12.text = f'{di12}'
+            l_out_per12.text = f'{pe12}'
+            l_out_are12.text = f'{ar12}'
+         
+    GridLayout:
+        id: spvalues
+        cols: 2
+        size_hint_y: None
+        height: self.minimum_height
+        pos_hint: {"center_x": .36, "center_y": .46}
+        spacing: 34
+        padding: 10
+        canvas.before:
+            Color:
+                rgba: 179/255, 179/234, 179/225, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+                   
+                   
+        MDLabel:
+            id: l_name_sida12
+            text: 'side a |'
+            halign: 'right'
+            font_size: "11px"
+            color: 0, 0, 1, 1
+            
+        MDLabel: 
+            id: l_out_sida12
+            text: '' 
+            font_size: "11px"
+            color: 1, 0, 0, 1
+            
+        MDLabel:
+            id: l_name_sidb12
+            text: 'side b  |'
+            halign: 'right'
+            font_size: "11px"
+            color: 0, 0, 1, 1
+           
+        MDLabel: 
+            id: l_out_sidb12
+            text: '' 
+            font_size: "11px"
+            color: 1, 0, 0, 1
+            
+        MDLabel:
+            id: l_name_dia12
+            text: 'diagonal  |'
+            halign: 'right'
+            font_size: "11px"
+            
+        MDLabel: 
+            id: l_out_dia12
+            text: '' 
+            font_size: "11px"
+            multiline: False
+                
+        MDLabel:
+            id: l_name_per12
+            text: 'perimeter  |'
+            halign: 'right'
+            font_size: "11px"
+            
+        MDLabel: 
+            id: l_out_per12
+            text: '' 
+            font_size: "11px"
+            
+        MDLabel:
+            id: l_name_are12
+            text: 'area  |'
+            halign: 'right'
+            font_size: "11px"
+            
+        MDLabel: 
+            id: l_out_are12
+            text: '' 
+            font_size: "11px"
+       
     MDToolbar:
         type: 'bottom'       
         mode: 'free-end'
