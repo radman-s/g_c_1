@@ -74,11 +74,11 @@ class MainApp(MDApp):
     def build(self):
 
         self.pi = 3.1415926535898
-        self.enter_r = str('Enter radius')
-        self.enter_h = str('Enter height')
-        self.enter_v = str('Enter volume')
-        self.enter_e = str('Enter edge')
-        self.enter_s = str('Enter side')
+        self.enter_r = str('enter radius')
+        self.enter_h = str('enter height')
+        self.enter_v = str('enter volume')
+        self.enter_e = str('enter edge')
+        self.enter_s = str('enter side')
         self.enter_vr = str('enter volume or radius')
         self.enter_sa = str('enter side a')
         self.enter_sb = str('enter side b')
@@ -347,7 +347,6 @@ class MainApp(MDApp):
         else:
             c = 2 * self.pi * float(r)
             return round(c, 2)
-
 # cirlce
 
     def ci_rad(self, d, c, a, r):

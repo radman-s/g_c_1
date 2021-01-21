@@ -27,8 +27,7 @@ ScreenManager:
         title: "G - Calc"
         anchor_title: 'center'
         height: 35
-        left_action_items: [["menu", lambda x: nav_drawer.set_state("open")]]
-        right_action_items: [['dots-vertical', lambda x: nav_drawer.set_state("open") ]]
+        
     
     GridLayout:
         cols: 2
@@ -177,7 +176,7 @@ ScreenManager:
         opacity: 1
     
     BoxLayout:
-        pos_hint: {"center_y": 1.1}
+        pos_hint: {"center_y": 1.14}
         
         padding: "10dp"
         spacing: "10dp"  
@@ -191,7 +190,6 @@ ScreenManager:
             line_color_focus: 0, 0, 1, 1
             size_hint: 1, None
             height: "30dp"
-            max_text_length: 21
             input_filter: 'float'
             multiline: False
             
@@ -205,7 +203,6 @@ ScreenManager:
             line_color_focus: 0, 0, 1, 1
             size_hint: 1, None
             height: "30dp"
-            max_text_length: 15
             input_filter: 'float'
             multiline: False
        
@@ -219,7 +216,7 @@ ScreenManager:
     MDIconButton:
         icon: "delete"
         theme_text_color: "ContrastParentBackground"
-        pos_hint: {"center_x": .92, "center_y": 0.43}
+        pos_hint: {"center_x": .92, "center_y": 0.5}
         text_color: app.theme_cls.primary_color
         user_font_size: "23sp"
         on_press:
@@ -237,7 +234,7 @@ ScreenManager:
         theme_text_color: "Custom"
         text_color: app.theme_cls.accent_color
         
-        pos_hint: {"center_x": .92, "center_y": 0.52}
+        pos_hint: {"center_x": .92, "center_y": 0.6}
         
         user_font_size: "23sp"
         
@@ -255,14 +252,23 @@ ScreenManager:
             l_out_vol1.text = f'{v1}'
             l_out_dia1.text = f'{d1}'
             l_out_are1.text = f'{a1}'
-            
+    
+    MDIconButton:
+        icon: "home-outline"
+        theme_text_color: "Hint"
+        pos_hint: {"center_x": .92, "center_y": 0.4}
+        text_color: app.theme_cls.primary_color
+        on_press: 
+            root.manager.current = 'menu'
+            root.manager.transition.direction = 'right'
+    
             
     GridLayout:
         id: spvalues
         cols: 2
         size_hint_y: None
         height: self.minimum_height
-        pos_hint: {"center_x": .36, "center_y": .43}
+        pos_hint: {"center_x": .36, "center_y": .5}
         spacing: 34
         padding: 10
         canvas.before:
@@ -330,14 +336,6 @@ ScreenManager:
         elevation: 10
         height: '25px'
                        
-    MDIconButton:
-        icon: "home-outline"
-        theme_text_color: "Hint"
-        pos_hint: {"center_x": .85, "center_y": 0.025}
-        text_color: app.theme_cls.primary_color
-        on_press: 
-            root.manager.current = 'menu'
-            root.manager.transition.direction = 'right'
 
 
 <CylinderScreen>
@@ -359,8 +357,7 @@ ScreenManager:
         opacity: 1
     
     BoxLayout:
-        pos_hint: {"center_y": 1.1}
-        
+        pos_hint: {"center_y": 1.145}
         padding: "10dp"
         spacing: "10dp"  
         
@@ -372,7 +369,6 @@ ScreenManager:
             line_color_focus: 0, 0, 1, 1
             size_hint: 1, None
             height: "30dp"
-            max_text_length: 21
             input_filter: 'float'
             multiline: False
             
@@ -385,7 +381,6 @@ ScreenManager:
             line_color_focus: 0, 0, 1, 1
             size_hint: 1, None
             height: "30dp"
-            max_text_length: 15
             input_filter: 'float'
             multiline: False
             
@@ -398,7 +393,7 @@ ScreenManager:
     MDIconButton:
         icon: "delete"
         theme_text_color: "ContrastParentBackground"
-        pos_hint: {"center_x": .92, "center_y": 0.43}
+        pos_hint: {"center_x": .92, "center_y": 0.5}
         text_color: app.theme_cls.primary_color
         user_font_size: "23sp"
         on_press:
@@ -413,23 +408,16 @@ ScreenManager:
             l_out_sar2.text = ''
             l_out_lsu2.text = ''
         
-        
-        
     MDIconButton:
         icon: "owl"
         theme_text_color: "Custom"
         text_color: app.theme_cls.accent_color
-        
-        pos_hint: {"center_x": .92, "center_y": 0.52}
-        
+        pos_hint: {"center_x": .92, "center_y": 0.6}
         user_font_size: "23sp"
-        
         on_press:
-            
             
             volume2 = tf_vol2.text
             height2 = tf_hei2.text
-            
             radius2 = app.cy_rad(volume2, height2)
             diameter2 = app.cy_dia(volume2, height2)
             
@@ -437,8 +425,6 @@ ScreenManager:
             sare2 = app.cy_sar(radius2,height2)
             lsur2 = app.cy_lsu(radius2, height2)
            
-           
-            
             l_out_vol2.text = f'{volume2}'
             l_out_hei2.text = f'{height2}'
             l_out_rad2.text = f'{radius2}'
@@ -448,14 +434,22 @@ ScreenManager:
             l_out_lsu2.text = f'{lsur2}'
             
             
-           
-    
+    MDIconButton:
+        icon: "home-outline"
+        theme_text_color: "Hint"
+        pos_hint: {"center_x": .92, "center_y": 0.4}
+        text_color: app.theme_cls.primary_color
+        on_press: 
+            root.manager.current = 'menu'
+            root.manager.transition.direction = 'right'
+            
+            
     GridLayout:
         id: cyvalues
         cols: 2
         size_hint_y: None
         height: self.minimum_height
-        pos_hint: {"center_x": .36, "center_y": .33}
+        pos_hint: {"center_x": .36, "center_y": .4}
         spacing: 34
         padding: 10
         canvas.before:
@@ -465,8 +459,6 @@ ScreenManager:
                 pos: self.pos
                 size: self.size
               
-                
-        
         MDLabel:
             id: l_name_vol2
             text: 'volume  |'
@@ -498,7 +490,6 @@ ScreenManager:
             text: 'radius  |'
             halign: 'right'
             font_size: "11px"
-            
             
         MDLabel: 
             id: l_out_rad2
@@ -539,8 +530,6 @@ ScreenManager:
             text: '' 
             font_size: "11px"
             
-        
-            
         MDLabel:
             id: l_name_lsu2
             text: 'lateral surface  |'
@@ -551,7 +540,6 @@ ScreenManager:
             id: l_out_lsu2
             text: '' 
             font_size: "11px"
-        
           
     MDToolbar:
        
@@ -560,18 +548,7 @@ ScreenManager:
         elevation: 10
         height: '25px'
       
-       
-            
-                    
-    MDIconButton:
-        icon: "home-outline"
-        theme_text_color: "Hint"
-        pos_hint: {"center_x": .85, "center_y": 0.025}
-        text_color: app.theme_cls.primary_color
-        on_press: 
-            root.manager.current = 'menu'
-            root.manager.transition.direction = 'right'
-   
+      
 <CubeScreen>
     id: cuscreen
     name: 'cube'
@@ -591,8 +568,7 @@ ScreenManager:
         opacity: 1
     
     BoxLayout:
-        pos_hint: {"center_y": 1.1}
-        
+        pos_hint: {"center_y":  1.145}
         padding: "10dp"
         spacing: "10dp"  
         
@@ -603,7 +579,6 @@ ScreenManager:
             line_color_focus: 0, 0, 1, 1
             size_hint: 1, None
             height: "30dp"
-            max_text_length: 21
             input_filter: 'float'
             multiline: False
             
@@ -617,7 +592,7 @@ ScreenManager:
     MDIconButton:
         icon: "delete"
         theme_text_color: "ContrastParentBackground"
-        pos_hint: {"center_x": .92, "center_y": 0.43}
+        pos_hint: {"center_x": .92, "center_y": 0.515}
         text_color: app.theme_cls.primary_color
         user_font_size: "23sp"
         on_press:
@@ -632,7 +607,7 @@ ScreenManager:
         icon: "owl"
         theme_text_color: "Custom"
         text_color: app.theme_cls.accent_color
-        pos_hint: {"center_x": .92, "center_y": 0.52}
+        pos_hint: {"center_x": .92, "center_y": 0.615}
         user_font_size: "23sp"   
         on_press:
             edge3 = tf_edg3.text
@@ -642,13 +617,22 @@ ScreenManager:
             l_out_spd3.text = f'{sp3}'
             l_out_sua3.text = f'{su3}'
             
+    MDIconButton:
+        icon: "home-outline"
+        theme_text_color: "Hint"
+        pos_hint: {"center_x": .92, "center_y": 0.415}
+        text_color: app.theme_cls.primary_color
+        on_press: 
+            root.manager.current = 'menu'
+            root.manager.transition.direction = 'right'
+            
 
     GridLayout:
         id: cuvalues
         cols: 2
         size_hint_y: None
         height: self.minimum_height
-        pos_hint: {"center_x": .36, "center_y": .455}
+        pos_hint: {"center_x": .36, "center_y": .55}
         spacing: 34
         padding: 10
         canvas.before:
@@ -695,21 +679,12 @@ ScreenManager:
             font_size: "11px"
             multiline: False
                 
-               
     MDToolbar:
         type: 'bottom'       
         mode: 'free-end'
         elevation: 10
         height: '25px'
                        
-    MDIconButton:
-        icon: "home-outline"
-        theme_text_color: "Hint"
-        pos_hint: {"center_x": .85, "center_y": 0.025}
-        text_color: app.theme_cls.primary_color
-        on_press: 
-            root.manager.current = 'menu'
-            root.manager.transition.direction = 'right'
             
 <ConeScreen>
     id: coscreen
@@ -730,8 +705,7 @@ ScreenManager:
         opacity: 1
     
     BoxLayout:
-        pos_hint: {"center_y": 1.1}
-        
+        pos_hint: {"center_y": 1.15}
         padding: "10dp"
         spacing: "10dp"  
         
@@ -742,7 +716,6 @@ ScreenManager:
             line_color_focus: 0, 0, 1, 1
             size_hint: 1, None
             height: "30dp"
-            max_text_length: 21
             input_filter: 'float'
             multiline: False
             
@@ -753,21 +726,18 @@ ScreenManager:
             line_color_focus: 0, 0, 1, 1
             size_hint: 1, None
             height: "30dp"
-            max_text_length: 21
             input_filter: 'float'
             multiline: False
             
-                    
     BoxLayout:
         orientation: 'horizontal'
         pos_hint: {"center_y": 1}
         padding: "10dp"
         
- 
     MDIconButton:
         icon: "delete"
         theme_text_color: "ContrastParentBackground"
-        pos_hint: {"center_x": .92, "center_y": 0.43}
+        pos_hint: {"center_x": .92, "center_y": 0.52}
         text_color: app.theme_cls.primary_color
         user_font_size: "23sp"
         on_press:
@@ -782,12 +752,11 @@ ScreenManager:
             l_out_lsu4.text = ''
             l_out_she4.text = ''
             
-            
     MDIconButton:
         icon: "owl"
         theme_text_color: "Custom"
         text_color: app.theme_cls.accent_color
-        pos_hint: {"center_x": .92, "center_y": 0.52}
+        pos_hint: {"center_x": .92, "center_y": 0.62}
         user_font_size: "23sp"   
         on_press:
         
@@ -808,14 +777,21 @@ ScreenManager:
             l_out_lsu4.text = f'{ls4}'
             l_out_she4.text = f'{sh4}'
             
-            
+    MDIconButton:
+        icon: "home-outline"
+        theme_text_color: "Hint"
+        pos_hint: {"center_x": .92, "center_y": 0.42}
+        text_color: app.theme_cls.primary_color
+        on_press: 
+            root.manager.current = 'menu'
+            root.manager.transition.direction = 'right'            
 
     GridLayout:
         id: cuvalues
         cols: 2
         size_hint_y: None
         height: self.minimum_height
-        pos_hint: {"center_x": .36, "center_y": .32}
+        pos_hint: {"center_x": .36, "center_y": .42}
         spacing: 34
         padding: 10
         canvas.before:
@@ -825,7 +801,7 @@ ScreenManager:
                 pos: self.pos
                 size: self.size
               
-              
+    
         MDLabel:
             id: l_name_rad4
             text: 'radius  |'
@@ -918,17 +894,7 @@ ScreenManager:
         elevation: 10
         height: '25px'
                        
-    MDIconButton:
-        icon: "home-outline"
-        theme_text_color: "Hint"
-        pos_hint: {"center_x": .85, "center_y": 0.025}
-        text_color: app.theme_cls.primary_color
-        on_press: 
-            root.manager.current = 'menu'
-            root.manager.transition.direction = 'right'
-            
-            
-
+    
 <PyramidScreen>
     id: pyscreen
     name: 'pyramid'
@@ -948,7 +914,7 @@ ScreenManager:
         opacity: 1
     
     BoxLayout:
-        pos_hint: {"center_y": 1.1}
+        pos_hint: {"center_y": 1.15}
         
         padding: "10dp"
         spacing: "10dp"  
@@ -960,7 +926,6 @@ ScreenManager:
             line_color_focus: 0, 0, 1, 1
             size_hint: 1, None
             height: "30dp"
-            max_text_length: 21
             input_filter: 'float'
             multiline: False
             
@@ -972,7 +937,6 @@ ScreenManager:
             line_color_focus: 0, 0, 1, 1
             size_hint: 1, None
             height: "30dp"
-            max_text_length: 21
             input_filter: 'float'
             multiline: False
             
@@ -986,7 +950,7 @@ ScreenManager:
     MDIconButton:
         icon: "delete"
         theme_text_color: "ContrastParentBackground"
-        pos_hint: {"center_x": .92, "center_y": 0.43}
+        pos_hint: {"center_x": .92, "center_y": 0.52}
         text_color: app.theme_cls.primary_color
         user_font_size: "23sp"
         on_press:
@@ -1005,7 +969,7 @@ ScreenManager:
         icon: "owl"
         theme_text_color: "Custom"
         text_color: app.theme_cls.accent_color
-        pos_hint: {"center_x": .92, "center_y": 0.52}
+        pos_hint: {"center_x": .92, "center_y": 0.62}
         user_font_size: "23sp"   
         on_press:
             side5 = tf_sid5.text
@@ -1025,13 +989,22 @@ ScreenManager:
             l_out_bsa5.text = f'{bsa5}'
             l_out_tsa5.text = f'{tsa5}'
             
+    MDIconButton:
+        icon: "home-outline"
+        theme_text_color: "Hint"
+        pos_hint: {"center_x": .92, "center_y": 0.42}
+        text_color: app.theme_cls.primary_color
+        on_press: 
+            root.manager.current = 'menu'
+            root.manager.transition.direction = 'right'
+            
             
     GridLayout:
         id: cuvalues
         cols: 2
         size_hint_y: None
         height: self.minimum_height
-        pos_hint: {"center_x": .37, "center_y": .34}
+        pos_hint: {"center_x": .37, "center_y": .45}
         spacing: 30
         padding: 10
         canvas.before:
@@ -1134,14 +1107,6 @@ ScreenManager:
         elevation: 10
         height: '25px'
                        
-    MDIconButton:
-        icon: "home-outline"
-        theme_text_color: "Hint"
-        pos_hint: {"center_x": .85, "center_y": 0.025}
-        text_color: app.theme_cls.primary_color
-        on_press: 
-            root.manager.current = 'menu'
-            root.manager.transition.direction = 'right'
             
             
 <CapsuleScreen>
@@ -1163,8 +1128,7 @@ ScreenManager:
         opacity: 1
     
     BoxLayout:
-        pos_hint: {"center_y": 1.1}
-        
+        pos_hint: {"center_y": 1.14}
         padding: "10dp"
         spacing: "10dp"  
         
@@ -1175,7 +1139,6 @@ ScreenManager:
             line_color_focus: 0, 0, 1, 1
             size_hint: 1, None
             height: "30dp"
-            max_text_length: 21
             input_filter: 'float'
             multiline: False
             
@@ -1187,11 +1150,9 @@ ScreenManager:
             line_color_focus: 0, 0, 1, 1
             size_hint: 1, None
             height: "30dp"
-            max_text_length: 15
             input_filter: 'float'
             multiline: False
             
-       
             
     BoxLayout:
         orientation: 'horizontal'
@@ -1202,30 +1163,49 @@ ScreenManager:
     MDIconButton:
         icon: "delete"
         theme_text_color: "ContrastParentBackground"
-        pos_hint: {"center_x": .92, "center_y": 0.43}
+        pos_hint: {"center_x": .92, "center_y": 0.52}
         text_color: app.theme_cls.primary_color
         user_font_size: "23sp"
         on_press:
         
-           
-            
             
     MDIconButton:
         icon: "owl"
         theme_text_color: "Custom"
         text_color: app.theme_cls.accent_color
-        pos_hint: {"center_x": .92, "center_y": 0.52}
+        pos_hint: {"center_x": .92, "center_y": 0.62}
         user_font_size: "23sp"
         on_press:
             
+            radius6 = tf_rad6.text
+            side6 = tf_sid6.text
             
+            vo6 = app.ca_vol(radius6, side6)
+            su6 = app.ca_sar(radius6, side6)
+            ci6 = app.ca_cir(radius6)
+            
+            l_out_rad6.text = f'{radius6}'
+            l_out_sid6.text = f'{side6}'
+            
+            l_out_vol6.text = f'{vo6}'
+            l_out_cir6.text = f'{ci6}'
+            l_out_sar6.text = f'{su6}'
+            
+    MDIconButton:
+        icon: "home-outline"
+        theme_text_color: "Hint"
+        pos_hint: {"center_x": .92, "center_y": 0.42}
+        text_color: app.theme_cls.primary_color
+        on_press: 
+            root.manager.current = 'menu'
+            root.manager.transition.direction = 'right'       
             
     GridLayout:
         id: spvalues
         cols: 2
         size_hint_y: None
         height: self.minimum_height
-        pos_hint: {"center_x": .36, "center_y": .39}
+        pos_hint: {"center_x": .36, "center_y": .49}
         spacing: 34
         padding: 10
         canvas.before:
@@ -1304,16 +1284,8 @@ ScreenManager:
         elevation: 10
         height: '25px'
                        
-    MDIconButton:
-        icon: "home-outline"
-        theme_text_color: "Hint"
-        pos_hint: {"center_x": .85, "center_y": 0.025}
-        text_color: app.theme_cls.primary_color
-        on_press: 
-            root.manager.current = 'menu'
-            root.manager.transition.direction = 'right'
+    
             
-
 <CircleScreen>
     id: ciscreen
     name: 'circle'
@@ -1334,7 +1306,6 @@ ScreenManager:
     
     BoxLayout:
         pos_hint: {"center_y": 1.15}
-        
         padding: "10dp"
         spacing: "10dp"  
         
@@ -1346,7 +1317,6 @@ ScreenManager:
             line_color_focus: 0, 0, 1, 1
             size_hint: 1, None
             height: "30dp"
-            max_text_length: 21
             input_filter: 'float'
             multiline: False
                         
@@ -1358,12 +1328,11 @@ ScreenManager:
             line_color_focus: 0, 0, 1, 1
             size_hint: 1, None
             height: "30dp"
-            max_text_length: 15
             input_filter: 'float'
             multiline: False
             
     BoxLayout:
-        pos_hint: {"center_y": 1.05}
+        pos_hint: {"center_y": 1.07}
         padding: "10dp"
         spacing: "10dp"
         
@@ -1376,7 +1345,6 @@ ScreenManager:
             line_color_focus: 0, 0, 1, 1
             size_hint: 1, None
             height: "30dp"
-            max_text_length: 15
             input_filter: 'float'
             multiline: False       
         
@@ -1388,7 +1356,6 @@ ScreenManager:
             line_color_focus: 0, 0, 1, 1
             size_hint: 1, None
             height: "30dp"
-            max_text_length: 15
             input_filter: 'float'
             multiline: False   
          
@@ -1402,7 +1369,7 @@ ScreenManager:
     MDIconButton:
         icon: "delete"
         theme_text_color: "ContrastParentBackground"
-        pos_hint: {"center_x": .92, "center_y": 0.39}
+        pos_hint: {"center_x": .92, "center_y": 0.44}
         text_color: app.theme_cls.primary_color
         user_font_size: "23sp"
         on_press:
@@ -1412,12 +1379,11 @@ ScreenManager:
             l_out_are7.text = ''
             
             
-            
     MDIconButton:
         icon: "owl"
         theme_text_color: "Custom"
         text_color: app.theme_cls.accent_color
-        pos_hint: {"center_x": .92, "center_y": 0.485}
+        pos_hint: {"center_x": .92, "center_y": 0.54}
         user_font_size: "23sp"
         on_press:
         
@@ -1431,11 +1397,19 @@ ScreenManager:
             ci7 = app.ci_cir(radius7, area7, diameter7, circum7)
             ar7 = app.ci_are(radius7, diameter7, circum7, area7)
             
-            
             l_out_rad7.text = f'{ra7}'
             l_out_dia7.text = f'{di7}'
             l_out_cir7.text = f'{ci7}'
             l_out_are7.text = f'{ar7}'
+            
+    MDIconButton:
+        icon: "home-outline"
+        theme_text_color: "Hint"
+        pos_hint: {"center_x": .92, "center_y": 0.34}
+        text_color: app.theme_cls.primary_color
+        on_press: 
+            root.manager.current = 'menu'
+            root.manager.transition.direction = 'right'
             
             
     GridLayout:
@@ -1443,7 +1417,7 @@ ScreenManager:
         cols: 2
         size_hint_y: None
         height: self.minimum_height
-        pos_hint: {"center_x": .36, "center_y": .39}
+        pos_hint: {"center_x": .36, "center_y": .44}
         spacing: 34
         padding: 10
         canvas.before:
@@ -1498,8 +1472,7 @@ ScreenManager:
             id: l_out_are7
             text: '' 
             font_size: "11px"
-       
-               
+        
     MDToolbar:
        
         type: 'bottom'       
@@ -1507,16 +1480,7 @@ ScreenManager:
         elevation: 10
         height: '25px'
                        
-    MDIconButton:
-        icon: "home-outline"
-        theme_text_color: "Hint"
-        pos_hint: {"center_x": .85, "center_y": 0.025}
-        text_color: app.theme_cls.primary_color
-        on_press: 
-            root.manager.current = 'menu'
-            root.manager.transition.direction = 'right'
-
-
+    
 
 <RtriangleScreen>
     id: rtscreen
@@ -1548,7 +1512,6 @@ ScreenManager:
             line_color_focus: 0, 0, 1, 1
             size_hint: 1, None
             height: "30dp"
-            max_text_length: 21
             input_filter: 'float'
             multiline: False
                         
@@ -1559,7 +1522,6 @@ ScreenManager:
             line_color_focus: 0, 0, 1, 1
             size_hint: 1, None
             height: "30dp"
-            max_text_length: 15
             input_filter: 'float'
             multiline: False
             
@@ -1573,7 +1535,7 @@ ScreenManager:
     MDIconButton:
         icon: "delete"
         theme_text_color: "ContrastParentBackground"
-        pos_hint: {"center_x": .92, "center_y": 0.5}
+        pos_hint: {"center_x": .92, "center_y": 0.51}
         text_color: app.theme_cls.primary_color
         user_font_size: "23sp"
         on_press:
@@ -1595,7 +1557,7 @@ ScreenManager:
         icon: "owl"
         theme_text_color: "Custom"
         text_color: app.theme_cls.accent_color
-        pos_hint: {"center_x": .92, "center_y": 0.6}
+        pos_hint: {"center_x": .92, "center_y": 0.61}
         user_font_size: "23sp"
         on_press:
             
@@ -1618,6 +1580,15 @@ ScreenManager:
             l_out_arer8.text = f'{ar8}'
             l_out_irad8.text = f'{irad8}'
             l_out_crad8.text = f'{crad8}'
+            
+    MDIconButton:
+        icon: "home-outline"
+        theme_text_color: "Hint"
+        pos_hint: {"center_x": .92, "center_y": 0.41}
+        text_color: app.theme_cls.primary_color
+        on_press: 
+            root.manager.current = 'menu'
+            root.manager.transition.direction = 'right'
               
     GridLayout:
         id: spvalues
@@ -1734,16 +1705,7 @@ ScreenManager:
         mode: 'free-end'
         elevation: 10
         height: '25px'
-                       
-    MDIconButton:
-        icon: "home-outline"
-        theme_text_color: "Hint"
-        pos_hint: {"center_x": .85, "center_y": 0.025}
-        text_color: app.theme_cls.primary_color
-        on_press: 
-            root.manager.current = 'menu'
-            root.manager.transition.direction = 'right'
-            
+                            
             
             
 <EqtriangleScreen>
@@ -1777,7 +1739,6 @@ ScreenManager:
             line_color_focus: 0, 0, 1, 1
             size_hint: 1, None
             height: "30dp"
-            max_text_length: 21
             input_filter: 'float'
             multiline: False
                         
@@ -1789,7 +1750,6 @@ ScreenManager:
             line_color_focus: 0, 0, 1, 1
             size_hint: 1, None
             height: "30dp"
-            max_text_length: 15
             input_filter: 'float'
             multiline: False
             
@@ -1808,7 +1768,6 @@ ScreenManager:
             line_color_focus: 0, 0, 1, 1
             size_hint: 1, None
             height: "30dp"
-            max_text_length: 15
             input_filter: 'float'
             multiline: False
             
@@ -1820,7 +1779,6 @@ ScreenManager:
             line_color_focus: 0, 0, 1, 1
             size_hint: 1, None
             height: "30dp"
-            max_text_length: 15
             input_filter: 'float'
             multiline: False
             
@@ -1840,7 +1798,6 @@ ScreenManager:
             line_color_focus: 0, 0, 1, 1
             size_hint: 1, None
             height: "30dp"
-            max_text_length: 15
             input_filter: 'float'
             multiline: False
         
@@ -1848,7 +1805,7 @@ ScreenManager:
     MDIconButton:
         icon: "delete"
         theme_text_color: "ContrastParentBackground"
-        pos_hint: {"center_x": .92, "center_y": 0.31}
+        pos_hint: {"center_x": .92, "center_y": 0.34}
         text_color: app.theme_cls.primary_color
         user_font_size: "23sp"
         on_press:
@@ -1864,7 +1821,7 @@ ScreenManager:
         icon: "owl"
         theme_text_color: "Custom"
         text_color: app.theme_cls.accent_color
-        pos_hint: {"center_x": .92, "center_y": 0.41}
+        pos_hint: {"center_x": .92, "center_y": 0.44}
         user_font_size: "23sp"
         on_press:
         
@@ -1886,13 +1843,22 @@ ScreenManager:
             l_out_are9.text = f'{ar9}'
             l_out_alt9.text = f'{al9}'
         
-                  
+    
+    MDIconButton:
+        icon: "home-outline"
+        theme_text_color: "Hint"
+        pos_hint: {"center_x": .92, "center_y": 0.24}
+        text_color: app.theme_cls.primary_color
+        on_press: 
+            root.manager.current = 'menu'
+            root.manager.transition.direction = 'right'
+       
     GridLayout:
         id: spvalues
         cols: 2
         size_hint_y: None
         height: self.minimum_height
-        pos_hint: {"center_x": .36, "center_y": .28}
+        pos_hint: {"center_x": .36, "center_y": .31}
         spacing: 34
         padding: 10
         canvas.before:
@@ -1965,14 +1931,7 @@ ScreenManager:
         elevation: 10
         height: '25px'
                        
-    MDIconButton:
-        icon: "home-outline"
-        theme_text_color: "Hint"
-        pos_hint: {"center_x": .85, "center_y": 0.025}
-        text_color: app.theme_cls.primary_color
-        on_press: 
-            root.manager.current = 'menu'
-            root.manager.transition.direction = 'right'
+    
             
 <IstriangleScreen>
     id: istscreen
@@ -1993,7 +1952,7 @@ ScreenManager:
         opacity: 1
     
     BoxLayout:
-        pos_hint: {"center_y": 1.13}
+        pos_hint: {"center_y": 1.14}
         padding: "10dp"
         spacing: "10dp"  
         
@@ -2001,11 +1960,9 @@ ScreenManager:
             id: tf_sida10
             helper_text: "side a"
             helper_text_mode: "persistent"
-           
             line_color_focus: 0, 0, 1, 1
             size_hint: 1, None
             height: "30dp"
-            max_text_length: 21
             input_filter: 'float'
             multiline: False
                         
@@ -2013,11 +1970,9 @@ ScreenManager:
             id: tf_sidb10
             helper_text: "side b"
             helper_text_mode: "persistent"
-            
             line_color_focus: 0, 0, 1, 1
             size_hint: 1, None
             height: "30dp"
-            max_text_length: 15
             input_filter: 'float'
             multiline: False
             
@@ -2025,7 +1980,7 @@ ScreenManager:
     MDIconButton:
         icon: "delete"
         theme_text_color: "ContrastParentBackground"
-        pos_hint: {"center_x": .92, "center_y": 0.48}
+        pos_hint: {"center_x": .92, "center_y": 0.515}
         text_color: app.theme_cls.primary_color
         user_font_size: "23sp"
         on_press:
@@ -2045,7 +2000,7 @@ ScreenManager:
         icon: "owl"
         theme_text_color: "Custom"
         text_color: app.theme_cls.accent_color
-        pos_hint: {"center_x": .92, "center_y": 0.58}
+        pos_hint: {"center_x": .92, "center_y": 0.615}
         user_font_size: "23sp"
         on_press:
         
@@ -2068,13 +2023,23 @@ ScreenManager:
             l_out_are10.text = f'{ar10}'
             l_out_alta10.text = f'{aa10}'
             l_out_altb10.text = f'{ab10}'
+            
+            
+    MDIconButton:
+        icon: "home-outline"
+        theme_text_color: "Hint"
+        pos_hint: {"center_x": .92, "center_y": 0.415}
+        text_color: app.theme_cls.primary_color
+        on_press: 
+            root.manager.current = 'menu'
+            root.manager.transition.direction = 'right'
            
     GridLayout:
         id: spvalues
         cols: 2
         size_hint_y: None
         height: self.minimum_height
-        pos_hint: {"center_x": .36, "center_y": .35}
+        pos_hint: {"center_x": .36, "center_y": .38}
         spacing: 34
         padding: 10
         canvas.before:
@@ -2184,15 +2149,7 @@ ScreenManager:
         elevation: 10
         height: '25px'
                        
-    MDIconButton:
-        icon: "home-outline"
-        theme_text_color: "Hint"
-        pos_hint: {"center_x": .85, "center_y": 0.025}
-        text_color: app.theme_cls.primary_color
-        on_press: 
-            root.manager.current = 'menu'
-            root.manager.transition.direction = 'right'
-            
+          
 
 <SquareScreen>
     id: sqtscreen
@@ -2213,7 +2170,7 @@ ScreenManager:
         opacity: 1
     
     BoxLayout:
-        pos_hint: {"center_y": 1.13}
+        pos_hint: {"center_y": 1.15}
         padding: "10dp"
         spacing: "10dp"  
         
@@ -2225,7 +2182,6 @@ ScreenManager:
             line_color_focus: 0, 0, 1, 1
             size_hint: 1, None
             height: "30dp"
-            max_text_length: 21
             input_filter: 'float'
             multiline: False
                         
@@ -2237,12 +2193,11 @@ ScreenManager:
             line_color_focus: 0, 0, 1, 1
             size_hint: 1, None
             height: "30dp"
-            max_text_length: 15
             input_filter: 'float'
             multiline: False
     
     BoxLayout:
-        pos_hint: {"center_y": 1.05}
+        pos_hint: {"center_y": 1.07}
         padding: "10dp"
         spacing: "10dp"  
         
@@ -2254,7 +2209,6 @@ ScreenManager:
             line_color_focus: 0, 0, 1, 1
             size_hint: 1, None
             height: "30dp"
-            max_text_length: 21
             input_filter: 'float'
             multiline: False
                         
@@ -2266,7 +2220,6 @@ ScreenManager:
             line_color_focus: 0, 0, 1, 1
             size_hint: 1, None
             height: "30dp"
-            max_text_length: 15
             input_filter: 'float'
             multiline: False
             
@@ -2274,7 +2227,7 @@ ScreenManager:
     MDIconButton:
         icon: "delete"
         theme_text_color: "ContrastParentBackground"
-        pos_hint: {"center_x": .92, "center_y": 0.42}
+        pos_hint: {"center_x": .92, "center_y": 0.44}
         text_color: app.theme_cls.primary_color
         user_font_size: "23sp"
         on_press:
@@ -2288,7 +2241,7 @@ ScreenManager:
         icon: "owl"
         theme_text_color: "Custom"
         text_color: app.theme_cls.accent_color
-        pos_hint: {"center_x": .92, "center_y": 0.52}
+        pos_hint: {"center_x": .92, "center_y": 0.54}
         user_font_size: "23sp"
         on_press:
         
@@ -2307,12 +2260,21 @@ ScreenManager:
             l_out_dia11.text = f'{di11}'
             l_out_sid11.text = f'{si11}'
             
+    MDIconButton:
+        icon: "home-outline"
+        theme_text_color: "Hint"
+        pos_hint: {"center_x": .92, "center_y": 0.34}
+        text_color: app.theme_cls.primary_color
+        on_press: 
+            root.manager.current = 'menu'
+            root.manager.transition.direction = 'right'
+            
     GridLayout:
         id: spvalues
         cols: 2
         size_hint_y: None
         height: self.minimum_height
-        pos_hint: {"center_x": .36, "center_y": .42}
+        pos_hint: {"center_x": .36, "center_y": .44}
         spacing: 34
         padding: 10
         canvas.before:
@@ -2321,7 +2283,7 @@ ScreenManager:
             Rectangle:
                 pos: self.pos
                 size: self.size
-                   
+                  
                    
         MDLabel:
             id: l_name_sid11
@@ -2375,14 +2337,7 @@ ScreenManager:
         elevation: 10
         height: '25px'
                        
-    MDIconButton:
-        icon: "home-outline"
-        theme_text_color: "Hint"
-        pos_hint: {"center_x": .85, "center_y": 0.025}
-        text_color: app.theme_cls.primary_color
-        on_press: 
-            root.manager.current = 'menu'
-            root.manager.transition.direction = 'right'
+    
             
 <RectangleScreen>
     id: rectscreen
@@ -2403,7 +2358,7 @@ ScreenManager:
         opacity: 1
     
     BoxLayout:
-        pos_hint: {"center_y": 1.13}
+        pos_hint: {"center_y": 1.15}
         padding: "10dp"
         spacing: "10dp"  
         
@@ -2414,7 +2369,6 @@ ScreenManager:
             line_color_focus: 0, 0, 1, 1
             size_hint: 1, None
             height: "30dp"
-            max_text_length: 21
             input_filter: 'float'
             multiline: False
                         
@@ -2425,7 +2379,6 @@ ScreenManager:
             line_color_focus: 0, 0, 1, 1
             size_hint: 1, None
             height: "30dp"
-            max_text_length: 15
             input_filter: 'float'
             multiline: False
     
@@ -2433,17 +2386,27 @@ ScreenManager:
     MDIconButton:
         icon: "delete"
         theme_text_color: "ContrastParentBackground"
-        pos_hint: {"center_x": .92, "center_y": 0.49}
+        pos_hint: {"center_x": .92, "center_y": 0.51}
         text_color: app.theme_cls.primary_color
         user_font_size: "23sp"
         on_press:
+            
+            tf_sida12.text = ''
+            tf_sidb12.text = ''
+            
+            l_out_sida12.text = ''
+            l_out_sidb12.text = ''
+            
+            l_out_dia12.text = ''
+            l_out_per12.text = ''
+            l_out_are12.text = ''
         
                  
     MDIconButton:
         icon: "owl"
         theme_text_color: "Custom"
         text_color: app.theme_cls.accent_color
-        pos_hint: {"center_x": .92, "center_y": 0.59}
+        pos_hint: {"center_x": .92, "center_y": 0.61}
         user_font_size: "23sp"
         on_press:
             
@@ -2461,12 +2424,21 @@ ScreenManager:
             l_out_per12.text = f'{pe12}'
             l_out_are12.text = f'{ar12}'
          
+    MDIconButton:
+        icon: "home-outline"
+        theme_text_color: "Hint"
+        pos_hint: {"center_x": .92, "center_y": 0.41}
+        text_color: app.theme_cls.primary_color
+        on_press: 
+            root.manager.current = 'menu'
+            root.manager.transition.direction = 'right'
+         
     GridLayout:
         id: spvalues
         cols: 2
         size_hint_y: None
         height: self.minimum_height
-        pos_hint: {"center_x": .36, "center_y": .46}
+        pos_hint: {"center_x": .36, "center_y": .48}
         spacing: 34
         padding: 10
         canvas.before:
@@ -2543,13 +2515,6 @@ ScreenManager:
         elevation: 10
         height: '25px'
                        
-    MDIconButton:
-        icon: "home-outline"
-        theme_text_color: "Hint"
-        pos_hint: {"center_x": .85, "center_y": 0.025}
-        text_color: app.theme_cls.primary_color
-        on_press: 
-            root.manager.current = 'menu'
-            root.manager.transition.direction = 'right'
+    
             
 """
