@@ -19,143 +19,121 @@ ScreenManager:
 <MenuScreen>
     id: mns
     name: 'menu'
-
-    MDToolbar:
-        id: toolbar
-        pos_hint: {"top": 1}
-        elevation: 8
-        title: "G - Calc"
-        anchor_title: 'center'
-        height: 35
-        
+    canvas.before:
+        Color:
+            rgba: 217/255, 217/234, 217/225, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
     
-    GridLayout:
-        cols: 2
-        size_hint_y: None
-        height: self.minimum_height
-        pos_hint: {"center_x": .5, "center_y": .8}
-       
-        
-        GridLayout:
-            cols:1
-            spacing: 10
-            padding: 10
+    Image:
+        source: 'main.png'
+        halign: 'center'
+        pos_hint: {'center_x': 0.5, 'center_y': 0.7}
+        allow_stretch:True
+        opacity: 1
+    
+                
+    MDRectangleFlatButton:
+        text: 'Sphere'
+        size: 20, 50
+        pos_hint: {"center_x": .17, "center_y": .69}
+        on_press: 
+            root.manager.current = 'sphere'
+            root.manager.transition.direction = 'left'
+    
+    MDRectangleFlatButton:
+        text: 'Cylinder'
+        size: 20, 50
+        pos_hint: {"center_x": .5, "center_y": .69}
+        on_press: 
+            root.manager.current = 'cylinder'
+            root.manager.transition.direction = 'left'
+    
+    MDRectangleFlatButton:
+        text: 'Cube'
+        size: 20, 50
+        pos_hint: {"center_x": .83, "center_y": .69}
+        on_press: 
+            root.manager.current = 'cube'
+            root.manager.transition.direction = 'left'
             
+                        
+    MDRectangleFlatButton:
+        text: 'Cone'
+        size: 20, 50
+        pos_hint: {"center_x": .17, "center_y": .57}
+        on_press: 
+            root.manager.current = 'cone'
+            root.manager.transition.direction = 'left'
 
-            MDRaisedButton:
-                text: 'Sphere'
-                pos_hint: {'center_x': 0.5, 'center_y': 0.7}
-                size: 20, 20
-                size_hint: None,None
-                on_press: 
-                    root.manager.current = 'sphere'
-                    root.manager.transition.direction = 'left'
-        
-            MDRaisedButton:
-                text: 'Cylinder'
-                pos_hint: {'center_x': 0.5, 'center_y': 0.6}
-                size: 20, 20
-                size_hint: None,None
-                on_press: 
-                    root.manager.current = 'cylinder'
-                    root.manager.transition.direction = 'left'
-        
-            MDRaisedButton:
-                text: 'Cube'
-                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
-                size: 20, 20
-                size_hint: None,None
-                on_press: 
-                    root.manager.current = 'cube'
-                    root.manager.transition.direction = 'left'
-        
-            MDRaisedButton:
-                text: 'Cone'
-                pos_hint: {'center_x': 0.5, 'center_y': 0.4}
-                size: 20, 20
-                size_hint: None,None
-                on_press: 
-                    root.manager.current = 'cone'
-                    root.manager.transition.direction = 'left'
-        
-            MDRaisedButton:
-                text: 'Pyramid'
-                pos_hint: {'center_x': 0.5, 'center_y': 0.3}
-                size: 20, 20
-                size_hint: None,None
-                on_press: 
-                    root.manager.current = 'pyramid'
-                    root.manager.transition.direction = 'left'
-                    
-            MDRaisedButton:
-                text: 'Capsule'
-                pos_hint: {'center_x': 0.5, 'center_y': 0.2}
-                size: 20, 20
-                size_hint: None,None
-                on_press: 
-                    root.manager.current = 'capsule'
-                    root.manager.transition.direction = 'left'
-                    
-                    
-        GridLayout:
-            cols:1
-            spacing: 10
-            padding: 10
+    MDRectangleFlatButton:
+        text: 'Pyramid'
+        size: 20, 50
+        pos_hint: {"center_x": .5, "center_y": .57}
+        on_press: 
+            root.manager.current = 'pyramid'
+            root.manager.transition.direction = 'left'
             
+    MDRectangleFlatButton:
+        text: 'Capsule'
+        size: 20, 50
+        pos_hint: {"center_x": .83, "center_y": .57}
+        on_press: 
+            root.manager.current = 'capsule'
+            root.manager.transition.direction = 'left'
+            
+            
+    MDRaisedButton:
+        text: 'Circle'
+        pos_hint: {'center_x': 0.17, 'center_y': .45}
+        size: 20, 50
+        on_press: 
+            root.manager.current = 'circle'
+            root.manager.transition.direction = 'left'
+            
+            
+    MDRaisedButton:
+        text: 'Square'
+        pos_hint: {'center_x': 0.5, 'center_y': .45}
+        size: 20, 50
+        on_press: 
+            root.manager.current = 'square'
+            root.manager.transition.direction = 'left'
 
-            MDRaisedButton:
-                text: 'Circle'
-                pos_hint: {'center_x': 0.5, 'center_y': 0.7}
-                size: 20, 20
-                size_hint: None,None
-                on_press: 
-                    root.manager.current = 'circle'
-                    root.manager.transition.direction = 'left'
-                    
-            MDRaisedButton:
-                text: 'R-Triangle'
-                pos_hint: {'center_x': 0.5, 'center_y': 0.6}
-                size: 20, 20
-                size_hint: None,None
-                on_press: 
-                    root.manager.current = 'rtriangle'
-                    root.manager.transition.direction = 'left'
+
+    MDRaisedButton:
+        text: 'Rectangle'
+        pos_hint: {'center_x': 0.83, 'center_y': .45}
+        size: 20, 50
+        on_press: 
+            root.manager.current = 'rectangle'
+            root.manager.transition.direction = 'left'
             
-            MDRaisedButton:
-                text: 'Eq-Triangle'
-                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
-                size: 20, 20
-                size_hint: None,None
-                on_press: 
-                    root.manager.current = 'eqtriangle'
-                    root.manager.transition.direction = 'left'
-                    
-            MDRaisedButton:
-                text: 'Is-Triangle'
-                pos_hint: {'center_x': 0.5, 'center_y': 0.4}
-                size: 20, 20
-                size_hint: None,None
-                on_press: 
-                    root.manager.current = 'istriangle'
-                    root.manager.transition.direction = 'left'
-                    
-            MDRaisedButton:
-                text: 'Square'
-                pos_hint: {'center_x': 0.5, 'center_y': 0.3}
-                size: 20, 20
-                size_hint: None,None
-                on_press: 
-                    root.manager.current = 'square'
-                    root.manager.transition.direction = 'left'
-                    
-            MDRaisedButton:
-                text: 'Rectangle'
-                pos_hint: {'center_x': 0.5, 'center_y': 0.2}
-                size: 20, 20
-                size_hint: None,None
-                on_press: 
-                    root.manager.current = 'rectangle'
-                    root.manager.transition.direction = 'left'
+            
+    MDRaisedButton:
+        text: 'Right\\nTriangle'
+        pos_hint: {'center_x': 0.17, 'center_y': .33}
+        size: 20, 50
+        on_press: 
+            root.manager.current = 'rtriangle'
+            root.manager.transition.direction = 'left'
+
+    MDRaisedButton:
+        text: 'Equilateral\\nTriangle'
+        pos_hint: {'center_x': 0.5, 'center_y': .33}
+        size: 20, 50
+        on_press: 
+            root.manager.current = 'eqtriangle'
+            root.manager.transition.direction = 'left'
+            
+    MDRaisedButton:
+        text: 'Isosceles\\nTriangle'
+        pos_hint: {'center_x': 0.83, 'center_y': .33}
+        size: 20, 50
+        on_press: 
+            root.manager.current = 'istriangle'
+            root.manager.transition.direction = 'left'
             
 <SphereScreen>
     id: spscreen

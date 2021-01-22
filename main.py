@@ -1,3 +1,4 @@
+from kivmob import KivMob, TestIds, RewardedListenerInterface
 from kivymd.app import MDApp
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.lang import Builder
@@ -98,7 +99,7 @@ class MainApp(MDApp):
             sq = (1 / 3)
             vo = (3 * float(v)) / (4 * self.pi)
             rad = vo ** sq
-            return round(rad,2)
+            return round(rad,3)
         else:
             return r
 
@@ -106,7 +107,7 @@ class MainApp(MDApp):
 
         if len(str(r)) > 0:
             vol = 4 / 3 * self.pi * float(r) ** 3
-            return round(vol, 2)
+            return round(vol, 3)
         else:
             return v
 
@@ -124,7 +125,7 @@ class MainApp(MDApp):
 
         if len(str(r)) > 0:
             a = 4 * self.pi * float(r) ** 2
-            return round(a,2)
+            return round(a, 3)
         else:
             r = self.enter_vr
             return r
@@ -139,7 +140,7 @@ class MainApp(MDApp):
             return h
         else:
             r = math.sqrt(float(v) / (self.pi * float(h)))
-            return round(r, 2)
+            return round(r, 3)
 
 
     def cy_dia(self, v, h):
@@ -153,7 +154,7 @@ class MainApp(MDApp):
         else:
             top = float(v) / (3.14 * float(h))
             but = math.sqrt(top) * 2
-            return round(but, 2)
+            return round(but, 3)
 
 
     def cy_bar(self, r):
@@ -161,7 +162,7 @@ class MainApp(MDApp):
            return r
        else:
            ba = self.pi * (float(r)) ** 2
-           return round(ba, 2)
+           return round(ba, 3)
 
 
     def cy_sar(self, r, h):
@@ -172,7 +173,7 @@ class MainApp(MDApp):
             return h
         else:
             a = 2 * self.pi * float(r) * float(h) + 2 * self.pi * float(r) ** 2
-            return round(a, 2)
+            return round(a, 3)
 
 
     def cy_lsu(self, r, h):
@@ -183,7 +184,7 @@ class MainApp(MDApp):
             return h
         else:
             ls = 2 * self.pi * float(r) * float(h)
-            return round(ls, 2)
+            return round(ls, 3)
 
 # cube
 
@@ -193,7 +194,7 @@ class MainApp(MDApp):
             return e
         else:
             sd = math.sqrt(3 * float(e))
-            return round(sd, 2)
+            return round(sd, 3)
 
     def cu_surface_area(self, e):
         if len(e) <= 0:
@@ -201,7 +202,7 @@ class MainApp(MDApp):
             return e
         else:
             a = 6 * (float(e))**2
-            return round(a, 2)
+            return round(a, 3)
 
 # cone
 
@@ -215,7 +216,7 @@ class MainApp(MDApp):
 
         else:
             v = self.pi * float(r) ** 2 * (float(h)/3)
-            return round(v, 2)
+            return round(v, 3)
 
 
     def co_barea(self, r):
@@ -224,7 +225,7 @@ class MainApp(MDApp):
             return r
         else:
             a = self.pi * float(r) ** 2
-            return round(a, 2)
+            return round(a, 3)
 
     def co_sarea(self, r, h):
         if len(r) <= 0:
@@ -235,7 +236,7 @@ class MainApp(MDApp):
             return h
         else:
             a = self.pi * float(r) *(float(r) + math.sqrt(float(h)**2 + float(r)**2))
-            return round(a, 2)
+            return round(a, 3)
 
     def co_lsurf(self, r, h):
         if len(r) <= 0:
@@ -246,7 +247,7 @@ class MainApp(MDApp):
             return h
         else:
             a = self.pi * float(r) * (math.sqrt(float(h)**2 + float(r)**2))
-            return round(a, 2)
+            return round(a, 3)
 
     def co_shei(self, r, h):
         if len(r) <= 0:
@@ -257,7 +258,7 @@ class MainApp(MDApp):
             return h
         else:
             l = math.sqrt(float(r)** 2 + float(h) ** 2)
-            return round(l, 2)
+            return round(l, 3)
 
 # pyramid
 
@@ -270,7 +271,7 @@ class MainApp(MDApp):
             return h
         else:
             v = (1 / 3) * ((float(s)) ** 2) * float(h)
-            return round(v, 2)
+            return round(v, 3)
 
 
     def py_shei(self, s, h):
@@ -282,7 +283,7 @@ class MainApp(MDApp):
             return h
         else:
             sh = math.sqrt(float(h) ** 2 + (1 / 4) * float(s) ** 2)
-            return round(sh, 2)
+            return round(sh, 3)
 
 
     def py_lsa(self, s, h):
@@ -294,7 +295,7 @@ class MainApp(MDApp):
             return h
         else:
             ls = float(s) * math.sqrt(float(s) ** 2 + 4 * float(h) ** 2)
-            return round(ls, 2)
+            return round(ls, 3)
 
 
     def py_bsa(self, s):
@@ -303,7 +304,7 @@ class MainApp(MDApp):
             return s
         else:
             bs = float(s) **2
-            return round(bs, 2)
+            return round(bs, 3)
 
 
     def py_tsa(self, s, h):
@@ -315,7 +316,7 @@ class MainApp(MDApp):
             return h
         else:
             ta = float(s) * (float(s) + math.sqrt(float(s) ** 2 + 4 * float(h) ** 2))
-            return round(ta, 2)
+            return round(ta, 3)
 # capsule
 
     def ca_vol(self, r, s):
@@ -327,7 +328,7 @@ class MainApp(MDApp):
             return s
         else:
             v = self.pi * (float(r) ** 2) * ((4 / 3) * float(r) + float(s))
-            return round(v, 2)
+            return round(v, 3)
 
     def ca_sar(self, r, s):
         if len(r) <= 0:
@@ -338,7 +339,7 @@ class MainApp(MDApp):
             return s
         else:
             sa = 2 * self.pi * float(r) * (2 * float(r) + float(s))
-            return round(sa, 2)
+            return round(sa, 3)
 
     def ca_cir(self, r):
         if len(r) <= 0:
@@ -346,19 +347,19 @@ class MainApp(MDApp):
             return r
         else:
             c = 2 * self.pi * float(r)
-            return round(c, 2)
+            return round(c, 3)
 # cirlce
 
     def ci_rad(self, d, c, a, r):
         if len(str(d)) > 0:
             r = float(d)/2
-            return round(r, 2)
+            return round(r, 3)
         elif len(str(c)) > 0:
             r = float(c)/(self.pi * 2)
-            return round(r, 2)
+            return round(r, 3)
         elif len(str(a)) > 0:
             r = math.sqrt(float(a)/self.pi)
-            return round(r,2)
+            return round(r, 3)
         else:
             return r
 
@@ -366,13 +367,13 @@ class MainApp(MDApp):
     def ci_dia(self, r, c, a, d):
         if len(str(r)) > 0:
             d = 2 * float(r)
-            return round(d, 2)
+            return round(d, 3)
         elif len(str(c)) > 0:
             d = float(c)/self.pi
-            return round(d, 2)
+            return round(d, 3)
         elif len(str(a)) > 0:
             d = 2 * math.sqrt(float(a) / self.pi)
-            return round(d, 2)
+            return round(d, 3)
         else:
             return d
 
@@ -380,13 +381,13 @@ class MainApp(MDApp):
     def ci_cir(self, r, a, d, c):
         if len(str(r)) > 0:
             c = 2 * self.pi * float(r)
-            return round(c, 2)
+            return round(c, 3)
         elif len(str(a)) > 0:
             c = 2 * self.pi * math.sqrt(float(a) / self.pi)
-            return round(c, 2)
+            return round(c, 3)
         elif len(str(d)) > 0:
             c =  self.pi * float(d)
-            return round(c, 2)
+            return round(c, 3)
         else:
             return c
 
@@ -394,13 +395,13 @@ class MainApp(MDApp):
     def ci_are(self, r, d, c, a):
         if len(str(r)) > 0:
             a = self.pi * float(r) ** 2
-            return round(a, 2)
+            return round(a, 3)
         elif len(str(d)) > 0:
             a = (self.pi * float(d) ** 2) / 4
-            return round(a, 2)
+            return round(a, 3)
         elif len(str(c)) > 0:
             a = (float(c) ** 2) / (4 * self.pi)
-            return round(a, 2)
+            return round(a, 3)
         else:
             return a
 
@@ -415,7 +416,7 @@ class MainApp(MDApp):
             return b
         else:
             cs = math.sqrt((float(a)**2) + (float(b)**2))
-            return round(cs, 2)
+            return round(cs, 3)
 
     def rt_per(self,  a, b, c):
         if len(str(a)) <= 0:
@@ -426,7 +427,7 @@ class MainApp(MDApp):
             return b
         else:
             pe = float(a) + float(b) + float(c)
-            return round(pe, 2)
+            return round(pe, 3)
 
     def rt_sper(self,  a, b, c):
         if len(str(a)) <= 0:
@@ -437,7 +438,7 @@ class MainApp(MDApp):
             return b
         else:
             pe = (float(a) + float(b) + float(c)) /2
-            return round(pe, 2)
+            return round(pe, 3)
 
     def rt_are(self,  a, b):
         if len(str(a)) <= 0:
@@ -448,7 +449,7 @@ class MainApp(MDApp):
             return b
         else:
             ar = (float(a) * float(b)) / 2
-            return round(ar, 2)
+            return round(ar, 3)
 
     def rt_irad(self,  a, b, c):
         if len(str(a)) <= 0:
@@ -459,7 +460,7 @@ class MainApp(MDApp):
             return b
         else:
             ar = (float(a) * float(b)) / (float(a) + float(b) + float(c))
-            return round(ar, 2)
+            return round(ar, 3)
 
     def rt_crad(self,  a, b, c):
         if len(str(a)) <= 0:
@@ -470,23 +471,23 @@ class MainApp(MDApp):
             return b
         else:
             cr = float(c)/ 2
-            return cr
+            return round(cr, 3)
 
 # eq-triangle
 
     def qt_sid(self,p, sp, ar, al, s):
         if len(str(p)) > 0:
             s = float(p)/3
-            return round(s, 2)
+            return round(s, 3)
         elif len(str(sp)) > 0:
             s = 2 * float(sp) / 3
-            return round(s, 2)
+            return round(s, 3)
         elif len(str(ar)) > 0:
             s = 2 * math.sqrt(float(ar)/math.sqrt(3))
-            return round(s, 2)
+            return round(s, 3)
         elif len(str(al)) > 0:
             s = (2 / math.sqrt(3) * float(al))
-            return round(s, 2)
+            return round(s, 3)
         else:
             return s
 
@@ -494,76 +495,76 @@ class MainApp(MDApp):
     def qt_per(self, s, sp, ar, al, p):
         if len(str(s)) > 0:
             p = 3 * float(s)
-            return round(p, 2)
+            return round(p, 3)
         elif len(str(sp)) > 0:
             a = 2 * float(sp) /3
             p = 3 * float(a)
-            return round(p, 2)
+            return round(p, 3)
         elif len(str(ar)) > 0:
             a = 2 * math.sqrt(float(ar)/math.sqrt(3))
             p = 3 * a
-            return round(p, 2)
+            return round(p, 3)
         elif len(str(al)) > 0:
             a = (2/math.sqrt(3)* float(al))
             p = 3 * a
-            return round(p, 2)
+            return round(p, 3)
         else:
             return p
 
     def qt_sper(self, s, ar, al, p, sp):
         if len(str(s)) > 0:
             sp = 3 * float(s) / 2
-            return round(sp, 2)
+            return round(sp, 3)
         elif len(str(ar)) > 0:
             a = 2 * math.sqrt(float(ar)/math.sqrt(3))
             sp = 3 * a / 2
-            return round(sp, 2)
+            return round(sp, 3)
         elif len(str(al)) > 0:
             a = (2/math.sqrt(3) * float(al))
             sp = 3 * a / 2
-            return round(sp, 2)
+            return round(sp, 3)
         elif len(str(p)) > 0:
             a = float(p) / 3
             sp = 3 *a / 2
-            return round(sp, 2)
+            return round(sp, 3)
         else:
             return sp
 
     def qt_are(self, s, al, p, sp, ar):
         if len(str(s)) > 0:
             ar = (1/4) * math.sqrt(3) * float(s)**2
-            return round(ar, 2)
+            return round(ar, 3)
         elif len(str(al)) > 0:
             a = (2/math.sqrt(3) * float(al))
             ar = (1/4) * math.sqrt(3) * a**2
-            return round(ar, 2)
+            return round(ar, 3)
         elif len(str(p)) > 0:
             a = float(p)/3
             ar = (1 / 4) * math.sqrt(3) * a**2
-            return round(ar, 2)
+            return round(ar, 3)
         elif len(str(sp)) > 0:
             a = 2 * float(sp) / 3
             ar = (1 / 4) * math.sqrt(3) * a**2
-            return round(ar, 2)
+            return round(ar, 3)
         else:
             return ar
 
     def qt_alt(self, s, p, sp, ar, al):
         if len(str(s)) > 0:
             al = (1/2) * math.sqrt(3) * float(s)
-            return round(al, 2)
+            return round(al, 3)
         elif len(str(p)) > 0:
             a = float(p) / 3
             al = (1/2) * math.sqrt(3) * float(a)
-            return round(al, 2)
+            return round(al, 3)
         elif len(str(sp)) > 0:
             a = 2 * float(sp) / 3
             al = (1/2) * math.sqrt(3) * a
-            return round(al, 2)
+            return round(al, 3)
         elif len(str(ar)) > 0:
             a = 2 * math.sqrt(float(ar)/math.sqrt(3))
             al = (1/2) * math.sqrt(3) * a
-            return round(al, 2)
+            return round(al, 3)
         else:
             return al
 
@@ -575,7 +576,7 @@ class MainApp(MDApp):
             return c
         else:
             c = float(a)
-            return round(c, 2)
+            return round(c, 3)
 
     def it_per(self, a, b):
         if len(str(a)) <= 0:
@@ -586,7 +587,7 @@ class MainApp(MDApp):
             return p
         else:
             p = 2 * float(a) + float(b)
-            return round(p, 2)
+            return round(p, 3)
 
     def it_sper(self, a, b):
         if len(str(a)) <= 0:
@@ -597,7 +598,7 @@ class MainApp(MDApp):
             return sp
         else:
             sp = float(a) + (float(b) / 2)
-            return round(sp, 2)
+            return round(sp, 3)
 
     def it_are(self, a, b):
         if len(str(a)) <= 0:
@@ -607,8 +608,8 @@ class MainApp(MDApp):
             ar = self.enter_sb
             return ar
         else:
-            ar = float(b)/4 * math.sqrt(4 * float(a)**2 - float(b)**2)
-            return round(ar, 2)
+            ar = (float(b)/4) * math.sqrt(4 * (float(a)**2) - (float(b)**2))
+            return round(ar, 3)
 
     def it_alta(self, a ,b):
         if len(str(a)) <= 0:
@@ -619,7 +620,7 @@ class MainApp(MDApp):
             return aa
         else:
             aa = float(b) / (2 * float(a)) * math.sqrt(4 * float(a) ** 2 - float(b) ** 2)
-            return round(aa, 2)
+            return round(aa, 3)
 
     def it_altb(self, a, b):
         if len(str(a)) <= 0:
@@ -630,7 +631,7 @@ class MainApp(MDApp):
             return ab
         else:
             ab = (1/2) * math.sqrt(4 * float(a)**2 - float(b)**2)
-            return round(ab, 2)
+            return round(ab, 3)
 
 # square
 
@@ -638,7 +639,7 @@ class MainApp(MDApp):
         if len(str(di)) > 0:
             a = float(di)/ math.sqrt(2)
             pe = float(a) * 4
-            return round(pe, 2)
+            return round(pe, 3)
 
 
         elif len(str(s)) > 0:
@@ -646,7 +647,7 @@ class MainApp(MDApp):
             return round(pe, 2)
         elif len(str(ar)) > 0:
             pe = float(ar) * 4
-            return round(pe, 2)
+            return round(pe, 3)
         else:
             return pe
 
@@ -654,39 +655,39 @@ class MainApp(MDApp):
         if len(str(di)) > 0:
             a = float(di) / math.sqrt(2)
             ar = float(a) ** 2
-            return round(ar, 2)
+            return round(ar, 3)
         elif len(str(s)) > 0:
             ar = float(s) ** 2
-            return ar
+            return round(ar, 3)
         elif len(str(pe)) > 0:
             ar = float(pe) ** 2
-            return ar
+            return round(ar, 3)
         else:
             return ar
 
     def sq_dia(self,s , pe, ar, di):
         if len(str(s)) > 0:
             di = math.sqrt(2) * float(s)
-            return round(di, 2)
+            return round(di, 3)
         elif len(str(pe)) > 0:
             di = math.sqrt(2) * float(pe)
-            return round(di, 2)
+            return round(di, 3)
         elif len(str(ar)) > 0:
             di = math.sqrt(2) * float(ar)
-            return round(di, 2)
+            return round(di, 3)
         else:
             return di
 
     def sq_sid(self, ar, di, pe, s):
         if len(str(ar)) > 0:
             s = math.sqrt(float(ar))
-            return round(s, 2)
+            return round(s, 3)
         elif len(str(di)) > 0:
             s = float(di) / math.sqrt(2)
-            return round(s, 2)
+            return round(s, 3)
         elif len(str(pe)) > 0:
             s = float(pe) / 4
-            return round(s, 2)
+            return round(s, 3)
         else:
             return s
 # rectangle
@@ -700,7 +701,7 @@ class MainApp(MDApp):
             return b
         else:
             a = float(a) * float(b)
-            return round(a, 2)
+            return round(a, 3)
 
     def re_dia(self, a, b):
         if len(str(a)) <= 0:
@@ -711,7 +712,7 @@ class MainApp(MDApp):
             return b
         else:
             d = math.sqrt(float(a)**2 + float(b)**2)
-            return round(d, 2)
+            return round(d, 3)
 
     def re_per(self, a, b):
         if len(str(a)) <= 0:
@@ -722,7 +723,7 @@ class MainApp(MDApp):
             return b
         else:
             p = 2 * float(a) + 2 * float(b)
-            return p
+            return round(p, 3)
 
 
 if __name__=='__main__':
